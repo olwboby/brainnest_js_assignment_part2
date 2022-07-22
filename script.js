@@ -144,7 +144,7 @@ function calculator() {
     }
   }
 
-  // ---- FUNCTION TO ENTER CHARACTERS BY PRESSING KEYS ON KEYBOARD ----
+  // ---- FUNCTION TO ENTER CHARACTERS BY PRESSING KEYS ON THE KEYBOARD ----
   function handleKeyPress(e) {
     if (e.key >= 0 && e.key <= 9) {
       handleNumbers(e.key);
