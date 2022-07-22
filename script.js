@@ -58,6 +58,7 @@ function calculator() {
     ) {
       currentNumber = '0';
       currentNumber += '.';
+      currentOperand.textContent = currentNumber;
     } else if (!currentNumber.includes('.')) {
       displayValue += '.';
     }
@@ -78,10 +79,17 @@ function calculator() {
   }
 
   function operatorCheck(text) {
-    operator = text;
-    previousOperand.textContent = previousNumber + ' ' + operator;
-    currentOperand.textContent = '0';
-    currentNumber = '';
+    if (
+      currentOperand.textContent === '0' &&
+      previousOperand.textContent === ''
+    ) {
+      operator = '';
+    } else {
+      operator = text;
+      previousOperand.textContent = previousNumber + ' ' + operator;
+      currentOperand.textContent = '0';
+      currentNumber = '';
+    }
   }
 
   // ---- COMPUTATION FUNCTION ----
@@ -131,6 +139,7 @@ function calculator() {
     previousOperand.textContent = '';
     currentNumber = '';
     currentOperand.textContent = '0';
+    displayValue = '0';
   }
 
   function deleteOneNumber() {
