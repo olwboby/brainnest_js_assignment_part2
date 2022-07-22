@@ -22,26 +22,22 @@ function calculator() {
       compute();
     }
   });
-
   numberButtons.forEach(button => {
     button.addEventListener('click', e => {
       handleNumbers(e.target.textContent);
     });
   });
-
   operationButtons.forEach(opButton => {
     opButton.addEventListener('click', e => {
       handleOperators(e.target.textContent);
     });
   });
-
   deleteButton.addEventListener('click', e => {
     deleteOneNumber(e.target.textContent);
   });
   allClearButton.addEventListener('click', e => {
     allClear(e.target.textContent);
   });
-
   function handleNumbers(number) {
     if (previousNumber !== '' && currentNumber !== '' && operator === '') {
       previousNumber = '';
@@ -63,7 +59,6 @@ function calculator() {
       displayValue += '.';
     }
   }
-
   function handleOperators(operant) {
     if (previousNumber === '') {
       previousNumber = currentNumber;
@@ -77,7 +72,6 @@ function calculator() {
       previousOperand.textContent = previousNumber + ' ' + operator;
     }
   }
-
   function operatorCheck(text) {
     if (
       currentOperand.textContent === '0' &&
@@ -96,7 +90,6 @@ function calculator() {
   function compute() {
     previousNumber = Number(previousNumber);
     currentNumber = Number(currentNumber);
-
     if (operator === '+') {
       previousNumber = previousNumber + currentNumber;
     } else if (operator === '-') {
@@ -120,7 +113,6 @@ function calculator() {
   function roundNumber(num) {
     return Math.round(num * 100000) / 100000;
   }
-
   function displayResults() {
     if (previousNumber.length <= 11) {
       currentOperand.textContent = previousNumber;
@@ -134,16 +126,13 @@ function calculator() {
 
   // ---- ALLCLEAR AND DELETE ONE NUMBER FFUNCTIONS
   function allClear() {
-    //allClearButton.addEventListener('click', () => {
     previousNumber = '';
     previousOperand.textContent = '';
     currentNumber = '';
     currentOperand.textContent = '0';
     displayValue = '0';
   }
-
   function deleteOneNumber() {
-    //deleteButton.addEventListener('click', () => {
     currentNumber = currentNumber.slice(0, -1);
     currentOperand.textContent = currentNumber;
     if (currentOperand.textContent === '') {
@@ -153,7 +142,6 @@ function calculator() {
       previousNumber = previousNumber.slice(0, -1);
       currentOperand.textContent = previousNumber;
     }
-    //});
   }
 
   // ---- FUNCTION TO ENTER CHARACTERS BY PRESSING KEYS ON KEYBOARD ----
